@@ -1,0 +1,91 @@
+<div class="checkout-page">
+    <div>
+      <p-button label="Regresar al carrito" icon="pi pi-arrow-left" (onClick)="backToCart()"></p-button>
+    </div>
+    <div class="grid checkout-form">
+      <div class="col-8">
+        <form [formGroup]="checkoutFormGroup">
+          <div class="p-fluid p-formgrid grid">
+            <div class="p-field col-4">
+              <label for="name">Nombre</label>
+              <input formControlName="name" id="name" type="text" pInputText />
+              <small *ngIf="checkoutForm.name.invalid && isSubmitted" class="p-error"
+                >El nombre es requerido</small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="email">Email</label>
+              <input formControlName="email" id="email" type="text" pInputText />
+              <small *ngIf="checkoutForm.email.invalid && isSubmitted" class="p-error"
+                ><span *ngIf="checkoutForm.email.errors.required">email es requerido</span>
+                <span *ngIf="checkoutForm.email.errors.email">email no valido</span></small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="color">Telefono</label><br />
+              <p-inputMask
+                mask="(999) 999-999999"
+                formControlName="phone"
+                placeholder="(+593) 999-999999"
+              ></p-inputMask>
+              <small *ngIf="checkoutForm.phone.invalid && isSubmitted" class="p-error"
+                >Un telefono es requerido</small
+              >
+            </div>
+          </div>
+          <div class="p-fluid p-formgrid grid">
+            <div class="p-field col-4">
+              <label for="street">Calle</label>
+              <input formControlName="street" id="street" type="text" pInputText />
+              <small *ngIf="checkoutForm.street.invalid && isSubmitted" class="p-error"
+                >La calle es requerida</small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="street">Barrio</label>
+              <input formControlName="apartment" id="apartment" type="text" pInputText />
+              <small *ngIf="checkoutForm.apartment.invalid && isSubmitted" class="p-error"
+                >El barrio es requerido</small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="street">Código Postal</label>
+              <input formControlName="zip" id="zip" type="text" pInputText />
+              <small *ngIf="checkoutForm.zip.invalid && isSubmitted" class="p-error"
+                >El código postal es requerido</small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="city">Ciudad</label>
+              <input formControlName="city" id="city" type="text" pInputText />
+              <small *ngIf="checkoutForm.city.invalid && isSubmitted" class="p-error"
+                >La ciudad es requerida</small
+              >
+            </div>
+            <div class="p-field col-4">
+              <label for="country">País</label><br />
+              <p-dropdown
+                [options]="countries"
+                formControlName="country"
+                optionLabel="name"
+                optionValue="id"
+                [filter]="true"
+                filterBy="name"
+                [showClear]="true"
+                placeholder="Selecciona un país"
+              ></p-dropdown>
+              <small *ngIf="checkoutForm.country.invalid && isSubmitted" class="p-error"
+                >El país es requerido</small
+              >
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-4">
+        <orders-order-summary></orders-order-summary>
+        <div class="checkout-button">
+          <p-button label="Confirmar Orden" (onClick)="placeOrder()"></p-button>
+        </div>
+      </div>
+    </div>
+  </div>
