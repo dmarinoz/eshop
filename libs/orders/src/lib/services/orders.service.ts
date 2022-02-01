@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../models/order';
-import { environment } from '@env/environment.prod';
+import { environment } from '@env/environment';
 import { map, switchMap } from 'rxjs/operators';
 import { OrderItem } from '../models/order-item';
 import { StripeService } from 'ngx-stripe';
